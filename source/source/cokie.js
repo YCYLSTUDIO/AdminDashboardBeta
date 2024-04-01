@@ -1,0 +1,7 @@
+document.addEventListener('DOMContentLoaded',function(){let AdminId=localStorage.getItem('AdminId');let CheckLogin=localStorage.getItem('CheckLogin');if(!AdminId){AdminId=generateAdminId();localStorage.setItem('AdminId',AdminId)}
+if(!CheckLogin){CheckLogin=!1;localStorage.setItem('CheckLogin',CheckLogin)}});function generateAdminId(){return'user_'+Math.random().toString(36).substr(2,9)}
+function logout(){let ask=confirm("Apakah anda yakin ingin logout?");if(ask==!0){clearlsk("data_admins");CheckLogin=!1;localStorage.setItem('CheckLogin',CheckLogin);window.location.reload()}}
+function afterLogin(){let CheckLogin=localStorage.getItem('CheckLogin');CheckLogin=!0;localStorage.setItem('CheckLogin',CheckLogin);nextLogin()}
+function make_data_profile(namai){var data_admins=localStorage.getItem("data_admins");if(data_admins){data_profile()}else{var data={nameprofile:namai,imgprofile:data_image_profile[0],};var data_admins=JSON.stringify(data);localStorage.setItem("data_admins",data_admins);if(data_profile()=="gagal"){make_data_profile(namai)}}}
+function data_profile(){var data_admins=localStorage.getItem("data_admins");if(data_admins){set_data_admin();return"aman"}else{return"gagal"}}
+function clearlsk(key){localStorage.removeItem(key)}
